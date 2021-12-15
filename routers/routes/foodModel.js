@@ -1,11 +1,12 @@
 const express = require("express");
-const foodModel = express.Router();
-const {authentication} = require("../middleware/authentication")
-const { getFood, postFood, deleteFood } = require("../controllers/food");
+// const { attachment } = require("express/lib/response");
+const foodRoute = express.Router();
+const {authentication} = require("../middlewares/authentication")
+const { getFood, postFood, deleteFood } = require("../controllers/Food");
 
-foodModel.get("/Food/:id",authentication,getFood);
-foodModel.post("/Food/:id" ,authentication,postFood);
-foodModel.delete("/Food/:id",authentication ,deleteFood);
+foodRoute.get("/Food", authentication ,getFood);
+foodRoute.post("/Food", authentication,postFood);
+foodRoute.delete("/Food/:id", authentication,deleteFood);
 
 
-module.exports = foodModel;
+module.exports = foodRoute;
