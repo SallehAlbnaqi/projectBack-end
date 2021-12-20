@@ -6,14 +6,18 @@ app.use(express.json());
 app.use(cors());
 
 
-const signUpRoute=require("./routers/routes/signUpRoute")
-const loginRoute=require("./routers/routes/loginRoute")
-const foodRoute=require("./routers/routes/foodModel")
+const signUpRoute = require("./routers/routes/signUpRoute")
+const loginRoute = require("./routers/routes/loginRoute")
+const foodRoute = require("./routers/routes/foodRoute")
+const dietRoute = require("./routers/routes/dietRoute")
+const FoodDiadRoute = require ("./routers/routes/FoodDiadRoute")
 
 
 app.use(signUpRoute)
 app.use(loginRoute)
 app.use(foodRoute)
+app.use(dietRoute)
+app.use(FoodDiadRoute)
 
 
   // ^ جبنا الساين واللوقن عشان نستخدمهم بالسيرفر

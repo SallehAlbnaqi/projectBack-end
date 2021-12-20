@@ -1,4 +1,6 @@
 const foodModel = require ("../../db/models/foodModel")
+// ^ استدعينا الفود موديل عشان نقدر نضيف نحذف
+
 
 const getFood = async (req,res)=>{
  try{
@@ -15,6 +17,7 @@ const postFood = async (req,res)=>{
   const newFood = new foodModel({ name:newName,description:newDescription,img:newImg , user})
     try{
         const saveFood = await newFood.save()
+        // سوينا حفظ للنيو فود بالداتا بيس
         // const foods = await foodModel.find({user: user}).populate("user");
         res.status(201).json(saveFood);
     } catch (error){
@@ -24,10 +27,12 @@ const postFood = async (req,res)=>{
 
 const deleteFood = async (req,res)=>{
     const id = req.params.id;
+    // ^ هنا نحذف عن طريق الايدي
     const user = req.token.userId
     try{
-        const dele = await foodModel.findOneAndDelete({_id: id , user: user})
-        res.status(201).json([dele, "delete"]);
+        const dele = await foodModel.findOneAndDelete({_id: id , user: user});
+                // ^ يبحث عن شي واحد ويحذفه اللي هو عن طريق ايدي
+        res.status(201).json(dele);
     } catch (error){
         res.send("error")
     }

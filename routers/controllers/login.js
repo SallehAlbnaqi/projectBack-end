@@ -5,17 +5,28 @@ const login = async ( req,res)=>{
     let { email, password } = req.body;
     try{
     const user = await userModel.findOne({ email: email});
+    console.log(user,"user");
+                     // يبحث عن الايميل بقاعدة البيانات
     if (user){
         const lok = await bcrypt.compare(password, user.password);
+            // ^ سوينا مقارنة على الباس االلي يدخلة اليوزر بالاوبجيكت
+                     
         if ( lok === true){
             const payload = { userId: user._id, userName: user.name };
-            const token = jwt.sign(payload,"ACC");
+        //  ^ عرفنا البيلود وحطينا فيه الاوبجيكت عشان نستفيد منها بالفرونت اند
+        const token = jwt.sign(payload,"ACC");
+      //  البايلود جزء من التوكن هي طريقة تشفير 
+
+
             res.status(200).json({token});
+            // ^ بعثنا التوكين ك اوبجيكت
         } else{
             res.status(403).json("wrong passWord")
+            // ^ اذا اليوزر دخل رمز خطأ  على حسب الشرط
         }
     } else {
     res.status(404).json("wrong email")
+    // ^ اذا الايميل غير موجود بقاعدة البيانات يعطينا null
     }
 
     } catch (err) {

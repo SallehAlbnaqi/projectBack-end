@@ -8,6 +8,7 @@ const authentication = (req, res, next) =>{
   // هنا قمنا بعملية التحقق للتوكن
   req.token = valid;
   next ();
+  // بالنيكست  تعتبر فانكشن نعرض التوكن او البيانات
    
     } catch (error){
     res.status(403)
