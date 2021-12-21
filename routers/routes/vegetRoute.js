@@ -1,7 +1,5 @@
 const express = require("express");
 const vegetRoute = express.Router();
-
-
 const { authentication } = require("../middlewares/authentication");
 const { getVeget , postVeget , deleteVegent} = require("../controllers/veget");
 
@@ -11,4 +9,4 @@ vegetRoute.delete("/veget/:id", authentication, deleteVegent);
 
 
 
-module.express = vegetRoute;
+module.exports = vegetRoute;

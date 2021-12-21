@@ -5,6 +5,7 @@ const dietModel = require ("../../db/models/dietModel");
  const getDiet = async(req,res)=>{
      try{
     const dite = await dietModel.find({});
+    //    الفايند لحالها ترجع اراي
     res.status(200).json(dite)
 } catch (err){
     res.send("err");
