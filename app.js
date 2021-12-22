@@ -26,10 +26,13 @@ app.use(vegetRoute)
 app.get("/", (req, res) => {
     res.status(200).json("welcome customers");
   });
-  
-
+   
+  // to create class in javaScript we use ....... keyword
+  // to remove an element from the beginning of an array we use ..... function
 ////////////////////////////
 const Port = 5000;
 app.listen(Port,()=>{
     console.log("server is running");
 })
+
+
