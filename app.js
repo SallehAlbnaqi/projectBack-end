@@ -12,7 +12,7 @@ const foodRoute = require("./routers/routes/foodRoute")
 const dietRoute = require("./routers/routes/dietRoute")
 const FoodDiadRoute = require ("./routers/routes/FoodDiadRoute")
 const vegetRoute = require("./routers/routes/vegetRoute")
-
+const userRoute = require("./routers/routes/userRoute")
 
 app.use(signUpRoute)
 app.use(loginRoute)
@@ -20,9 +20,9 @@ app.use(foodRoute)
 app.use(dietRoute)
 app.use(FoodDiadRoute)
 app.use(vegetRoute)
+app.use(userRoute)
 
-
-  // ^ جبنا الساين واللوقن عشان نستخدمهم بالسيرفر
+  // ^ جبناهم عشان نستخدمهم بالسيرفر
 app.get("/", (req, res) => {
     res.status(200).json("welcome customers");
   });

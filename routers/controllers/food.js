@@ -13,7 +13,7 @@ res.status(200).json(foods);
 const postFood = async (req,res)=>{
   let { newName, newDescription, newImg } = req.body;
   const user = req.token.userId
-  console.log({ name:newName,description:newDescription,img:newImg , user});
+//   console.log({ name: newName, description: newDescription, img: newImg, user});
   const newFood = new foodModel({ name:newName,description:newDescription,img:newImg , user})
     try{
         const saveFood = await newFood.save()

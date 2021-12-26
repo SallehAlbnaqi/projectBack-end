@@ -16,9 +16,9 @@ const { newName, newDescription, newImg } = req.body;
 const user = req.token.userId;
 try {
     const newDiab = new FoodDiabeticsModel
-    ({name: newName, description: newDescription, img:newImg });
+    ({name: newName, description: newDescription, img:newImg, user });
     const saveDiab = await newDiab.save();
-    res.status(200).json(saveDiab)
+    res.status(201).json(saveDiab)
 } catch (err){
     res.send("err");
 }
@@ -26,10 +26,10 @@ try {
 
 const deleteFoDiab = async (req, res) => {
     const id = req.params.id;
-    const user = req.token.userId;
+    // const user = req.token.userId;
     try{
-    const deleDiad = await FoodDiabeticsModel.findOneAndDelete({_id:id});
-      res.status(200).json(deleDiad);
+    const deleDiad = await FoodDiabeticsModel.findOneAndDelete({_id:id, user:user });
+      res.status(201).json(deleDiad);
     } catch (err){
         res.send(err)
     }

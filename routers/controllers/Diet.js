@@ -15,7 +15,7 @@ const dietModel = require ("../../db/models/dietModel");
  
  const postDiet = async (req,res)=>{
      const {newName, newDescription, newImg} = req.body;
-     const user = req.token.userId;
+     const user  = req.token.userId
 
      try{
      const newDiet = new dietModel({ name:newName,description:newDescription,img:newImg , user});
@@ -25,13 +25,20 @@ const dietModel = require ("../../db/models/dietModel");
      } catch (err){
          res.send(err)
      }
-     l
  }
 
  const deleteDiet =  async (req,res)=>{
      const id = req.params.id;
      const user = req.token.userId
-    const delet = await dietModel.findOneAndDelete({_id:id , user:user});
+    try{
+    const delet = await dietModel.findOneAndDelete({_id:id , user: user});
     res.status(201).json(delet)
+    } catch (err){
+       res.send(err) 
+    }
 }
-module.exports = { getDiet , postDiet, deleteDiet }
+
+
+
+
+module.exports = { getDiet, postDiet, deleteDiet }
