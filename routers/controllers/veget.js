@@ -15,8 +15,7 @@ const postVeget = async (req,res) =>{
 const { newName, newDescription, newImg } = req.body;
 const user = req.token.userId
 try{
-    const newVeget = new vegetModel
-    ({name: newName, description: newDescription, img: newImg });
+    const newVeget = new vegetModel({name: newName, description: newDescription, img: newImg });
     const savedVeget = await newVeget.save();
     res.status(201).json(savedVeget);
 }catch (error) {
@@ -36,5 +35,7 @@ try{
     res.send(err)
 }
 }
+
+
 
 module.exports = { getVeget , postVeget , deleteVegent };

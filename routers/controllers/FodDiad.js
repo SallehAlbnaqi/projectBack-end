@@ -16,7 +16,7 @@ const { newName, newDescription, newImg } = req.body;
 const user = req.token.userId;
 try {
     const newDiab = new FoodDiabeticsModel
-    ({name: newName, description: newDescription, img:newImg, user });
+    ({name: newName, description: newDescription, img:newImg });
     const saveDiab = await newDiab.save();
     res.status(201).json(saveDiab)
 } catch (err){

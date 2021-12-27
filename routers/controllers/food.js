@@ -14,7 +14,7 @@ const postFood = async (req,res)=>{
   let { newName, newDescription, newImg } = req.body;
   const user = req.token.userId
 //   console.log({ name: newName, description: newDescription, img: newImg, user});
-  const newFood = new foodModel({ name:newName,description:newDescription,img:newImg , user})
+  const newFood = new foodModel({ name:newName,description:newDescription,img:newImg })
     try{
         const saveFood = await newFood.save()
         // سوينا حفظ للنيو فود بالداتا بيس

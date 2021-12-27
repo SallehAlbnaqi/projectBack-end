@@ -13,6 +13,19 @@ const dietModel = require ("../../db/models/dietModel");
  }
 
  
+// const postDiet = async (req,res)=.{
+    // const {newName, newDescription, newImg} = req.body;
+    // const user = req.token.userId;
+    // const post = new DietModel({name: newName, discription: newDiscription, img: newImg});
+    // const saved = await post.save();
+    // res.status(201).json(saved)
+
+// }
+
+
+
+
+
  const postDiet = async (req,res)=>{
      const {newName, newDescription, newImg} = req.body;
      const user  = req.token.userId
@@ -31,7 +44,7 @@ const dietModel = require ("../../db/models/dietModel");
      const id = req.params.id;
      const user = req.token.userId
     try{
-    const delet = await dietModel.findOneAndDelete({_id:id , user: user});
+    const delet = await dietModel.findOneAndDelete({_id:id });
     res.status(201).json(delet)
     } catch (err){
        res.send(err) 
