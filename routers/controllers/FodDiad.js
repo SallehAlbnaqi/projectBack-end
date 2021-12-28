@@ -24,6 +24,19 @@ try {
 }
 } 
 
+
+const putUpd = async (req,res)=>{
+const id = req.params.id
+let {name, discription} = req.body;
+try{
+    const putUb = await FoodDiabeticsModel.findOneAndUpdate
+    ({_id:id, name: name, discription: discription });
+    res.status(201).json(putUb)
+} catch (err){
+    res.send(err)
+}
+}
+
 const deleteFoDiab = async (req, res) => {
     const id = req.params.id;
     // const user = req.token.userId;
@@ -38,4 +51,4 @@ const deleteFoDiab = async (req, res) => {
 
 
 
-module.exports = { getFoDiab,  postFoDiab,  deleteFoDiab }
+module.exports = { getFoDiab,  postFoDiab,  deleteFoDiab, putUpd }

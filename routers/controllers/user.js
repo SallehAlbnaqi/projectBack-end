@@ -11,6 +11,8 @@ const getUser = async (req, res) => {
   }
 };
 
+
+
 const updetUF = async (req, res) => {
   let { name, password, img } = req.body;
   const user = req.token.userId;

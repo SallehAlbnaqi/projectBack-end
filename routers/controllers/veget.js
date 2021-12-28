@@ -25,6 +25,19 @@ try{
 }
 
 
+const putVeget = async (req,res)=>{
+  const id = req.params.id;
+  let {name, discription} = req.body;
+  try{
+    const vegetUpb = await vegetModel.findOneAndUpdate({_id: id, name: name, discription: discription});
+    res.status(201).json(vegetUpb);
+
+  } catch (err){
+     res.send(err) 
+  } 
+}
+
+
 const deleteVegent = async (req,res)=>{
  const id = req.params.id;
 // const user = req.token.userId
@@ -38,4 +51,4 @@ try{
 
 
 
-module.exports = { getVeget , postVeget , deleteVegent };
+module.exports = { getVeget , postVeget , deleteVegent, putVeget };

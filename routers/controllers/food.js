@@ -25,6 +25,17 @@ const postFood = async (req,res)=>{
     }
 }
 
+const putFood = async (req,res)=>{
+    const id = req.params.id;
+    let {name, discription} = req.body;
+    try{
+      const foodUpb = await foodModel.findOneAndUpdate({_id: id, name: name, discription: discription});
+      res.status(201).json(foodUpb);
+    } catch (err){
+       res.send(err) 
+    }
+}
+
 const deleteFood = async (req,res)=>{
     const id = req.params.id;
     // ^ هنا نحذف عن طريق الايدي
@@ -38,4 +49,4 @@ const deleteFood = async (req,res)=>{
     }
 }
 
-module.exports = { getFood, postFood, deleteFood }
+module.exports = { getFood, postFood, deleteFood, putFood }

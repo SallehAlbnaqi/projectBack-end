@@ -12,18 +12,6 @@ const dietModel = require ("../../db/models/dietModel");
 }
  }
 
- 
-// const postDiet = async (req,res)=.{
-    // const {newName, newDescription, newImg} = req.body;
-    // const user = req.token.userId;
-    // const post = new DietModel({name: newName, discription: newDiscription, img: newImg});
-    // const saved = await post.save();
-    // res.status(201).json(saved)
-
-// }
-
-
-
 
 
  const postDiet = async (req,res)=>{
@@ -40,6 +28,17 @@ const dietModel = require ("../../db/models/dietModel");
      }
  }
 
+
+ const putDiet = async (req,res)=>{
+  const id = req.params.id;
+  let {name, discription} = req.body;
+  try{
+    const dietUpd = await dietModel.findOneAndUpdate({_id: id, name: name, discription: discription});
+    res.status(err).json(dietUpd);
+  } catch (err){
+      res.send(err)
+  }
+ }
  const deleteDiet =  async (req,res)=>{
      const id = req.params.id;
      const user = req.token.userId
@@ -54,4 +53,4 @@ const dietModel = require ("../../db/models/dietModel");
 
 
 
-module.exports = { getDiet, postDiet, deleteDiet }
+module.exports = { getDiet, postDiet, deleteDiet, putDiet }
