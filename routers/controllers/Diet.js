@@ -13,6 +13,18 @@ const dietModel = require ("../../db/models/dietModel");
  }
 
 
+ const goDietFood = async (req,res)=>{
+  const id = req.params.id;
+  console.log(id);
+  const user = req.token.userId;
+  try{
+
+     const foodDiet = await dietModel.findOne({_id: id}).populate("user");
+     res.status(200).json(foodDiet);
+  } catch (err){
+      res.send(err)
+  }
+ }
 
  const postDiet = async (req,res)=>{
      const {newName, newDescription, newImg} = req.body;
@@ -53,4 +65,4 @@ const dietModel = require ("../../db/models/dietModel");
 
 
 
-module.exports = { getDiet, postDiet, deleteDiet, putDiet }
+module.exports = { getDiet, goDietFood, postDiet, deleteDiet, putDiet }

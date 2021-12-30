@@ -10,6 +10,17 @@ const getVeget =  async (req,res) =>{
     }
 }
 
+const getVegetFood = async (req,res)=>{
+   const id = req.params.id;
+   const user = req.token.userId;
+   try{
+      const vegetFood = await vegetModel.findOne({_id: id}).populate("user");
+      res.status(200).json(vegetFood);
+   } catch (err){
+       res.send(err)
+   }
+}
+
 
 const postVeget = async (req,res) =>{
 const { newName, newDescription, newImg } = req.body;
@@ -51,4 +62,4 @@ try{
 
 
 
-module.exports = { getVeget , postVeget , deleteVegent, putVeget };
+module.exports = { getVeget , getVegetFood, postVeget , deleteVegent, putVeget };

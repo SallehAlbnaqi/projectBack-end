@@ -11,6 +11,20 @@ const getFoDiab = async (req,res) => {
 }
 
 
+const goFood = async (req, res)=>{
+  const id = req.params.id;
+  const user = req.token.userId;
+
+ 
+  try{
+     const foodDied = await FoodDiabeticsModel.findOne({_id: id}).populate("user");
+     res.status(200).json(foodDied);
+
+  } catch (err){
+      res.send(err)
+  }
+}
+
 const postFoDiab = async (req, res) => {
 const { newName, newDescription, newImg } = req.body;
 const user = req.token.userId;
@@ -51,4 +65,4 @@ const deleteFoDiab = async (req, res) => {
 
 
 
-module.exports = { getFoDiab,  postFoDiab,  deleteFoDiab, putUpd }
+module.exports = { getFoDiab,  postFoDiab,  deleteFoDiab, putUpd, goFood }

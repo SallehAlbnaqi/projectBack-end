@@ -12,6 +12,7 @@ res.status(200).json(foods);
 }
 const postFood = async (req,res)=>{
   let { newName, newDescription, newImg } = req.body;
+//   ^ البودي هذا جانا من الفرونت اند عشان يطلب البيانات  اللي فوق 
   const user = req.token.userId
 //   console.log({ name: newName, description: newDescription, img: newImg, user});
   const newFood = new foodModel({ name:newName,description:newDescription,img:newImg })
@@ -20,6 +21,7 @@ const postFood = async (req,res)=>{
         // سوينا حفظ للنيو فود بالداتا بيس
         // const foods = await foodModel.find({user: user}).populate("user");
         res.status(201).json(saveFood);
+        // هنا استجبنا للطلب اللي جاناوارسلناه ..
     } catch (error){
         res.send("error")
     }

@@ -15,4 +15,4 @@ userRoute.delete("/deletUser/:id", authentication, removUser);
 
 
 
-module.exports = userRoute;  
+module.exports = userRoute;    
