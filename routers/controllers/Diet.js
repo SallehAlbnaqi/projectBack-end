@@ -65,4 +65,4 @@ const dietModel = require ("../../db/models/dietModel");
 
 
 
-module.exports = { getDiet, goDietFood, postDiet, deleteDiet, putDiet }
+module.exports = { getDiet, goDietFood, postDiet, deleteDiet, putDiet };
