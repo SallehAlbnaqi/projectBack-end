@@ -17,6 +17,12 @@ const login = async ( req,res)=>{
         //  ^ عرفنا البيلود وحطينا فيه الاوبجيكت عشان نستفيد منها بالفرونت اند
         const token = jwt.sign(payload,"ACC");
       //  البايلود جزء من التوكن هي طريقة تشفير 
+    //   let Admin = [];
+    //   if(user.Admin === true){
+    //     Admin.push("getFood", "postFood", "putFood", "deleteFood")  
+    //   } else {
+    //      Admin.push("getFood");
+    //   }
 
 
             res.status(200).json({token});

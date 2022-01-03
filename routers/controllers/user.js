@@ -14,14 +14,13 @@ const getUser = async (req, res) => {
 
 
 const updetUF = async (req, res) => {
-  let { name, password, img } = req.body;
+  let { name, img } = req.body;
   const user = req.token.userId;
 
   try {
-    password = await bcrypt.hash(password, 9);
     const upbetU = await userModel.findByIdAndUpdate(
       { _id: user },
-      { name, password, img },
+      { name, img },
       { new: true }
     //   ^ نسوي تحديث لليوزر والباس 
     );
