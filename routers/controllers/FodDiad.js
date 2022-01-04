@@ -15,7 +15,7 @@ const goFood = async (req, res)=>{
   const id = req.params.id;
   const user = req.token.userId;
 
- 
+ console.log(goFood);
   try{
      const foodDied = await FoodDiabeticsModel.findOne({_id: id}).populate("user");
      res.status(200).json(foodDied);

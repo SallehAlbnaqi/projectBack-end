@@ -15,7 +15,7 @@ const dietModel = require ("../../db/models/dietModel");
 
  const goDietFood = async (req,res)=>{
   const id = req.params.id;
-  console.log(id);
+  console.log(req);
   const user = req.token.userId;
   try{
 
