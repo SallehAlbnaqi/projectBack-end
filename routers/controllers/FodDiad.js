@@ -26,11 +26,11 @@ const goFood = async (req, res)=>{
 }
 
 const postFoDiab = async (req, res) => {
-const { newName, newDescription, newImg } = req.body;
+const { newName, newDescription, newImg, newVideo } = req.body;
 const user = req.token.userId;
 try {
     const newDiab = new FoodDiabeticsModel
-    ({name: newName, description: newDescription, img:newImg });
+    ({name: newName, description: newDescription, img:newImg, video: newVideo });
     const saveDiab = await newDiab.save();
     res.status(201).json(saveDiab)
 } catch (err){

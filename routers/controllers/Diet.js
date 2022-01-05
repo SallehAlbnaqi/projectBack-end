@@ -19,7 +19,7 @@ const dietModel = require ("../../db/models/dietModel");
   const user = req.token.userId;
   try{
 
-     const foodDiet = await dietModel.findOne({_id: id}).populate("user");
+     const foodDiet = await dietModel.findOne({_id: id, }).populate("user");
      res.status(200).json(foodDiet);
   } catch (err){
       res.send(err)
@@ -27,11 +27,11 @@ const dietModel = require ("../../db/models/dietModel");
  }
 
  const postDiet = async (req,res)=>{
-     const {newName, newDescription, newImg} = req.body;
+     const {newName, newDescription, newImg, newVideo} = req.body;
      const user  = req.token.userId
-
+console.log(req);
      try{
-     const newDiet = new dietModel({ name:newName,description:newDescription,img:newImg , user});
+     const newDiet = new dietModel({ name:newName,description:newDescription,img:newImg , video: newVideo, user});
       const savedDiet = await newDiet.save();
       res.status(201).json(savedDiet)
          
