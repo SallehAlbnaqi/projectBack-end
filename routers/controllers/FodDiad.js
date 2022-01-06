@@ -26,7 +26,9 @@ const goFood = async (req, res)=>{
 }
 
 const postFoDiab = async (req, res) => {
-const { newName, newDescription, newImg, newVideo } = req.body;
+let { newName, newDescription, newImg, newVideo } = req.body;
+newVideo =  "https://www.youtube.com/embed/"+newVideo
+
 const user = req.token.userId;
 try {
     const newDiab = new FoodDiabeticsModel

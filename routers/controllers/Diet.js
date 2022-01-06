@@ -27,11 +27,14 @@ const dietModel = require ("../../db/models/dietModel");
  }
 
  const postDiet = async (req,res)=>{
-     const {newName, newDescription, newImg, newVideo} = req.body;
+     let  {newName, newDescription, newImg, newVideo } = req.body;
+     newVideo =  "https://www.youtube.com/embed/"+newVideo
+    //  اليوزر يدخل الايدي فقط لانه الرابط يبقى ثابت والايدي يتغير حسب كل فيديو
      const user  = req.token.userId
 console.log(req);
      try{
-     const newDiet = new dietModel({ name:newName,description:newDescription,img:newImg , video: newVideo, user});
+     const newDiet = new dietModel({ name:newName,description:newDescription,img:newImg ,
+        video: newVideo, user});
       const savedDiet = await newDiet.save();
       res.status(201).json(savedDiet)
          
@@ -65,4 +68,36 @@ console.log(req);
 
 
 
-module.exports = { getDiet, goDietFood, postDiet, deleteDiet, putDiet };
+
+const postComment = async (req,res)=>{
+    const {comment} = req.body;
+    const {id}= req.params;
+    const userName = req.token.userName;
+    const userId = req.token.userId;
+    console.log(id,userName);
+    try{
+       const AddCom = await dietModel.findOneAndUpdate({_id: id }, {$push:{comment:{ comment, userName,userId}}},
+       {new: true}).populate("user");
+       res.status(201).json(AddCom)
+    } catch (err){
+        res.send(err)
+    }
+}
+//
+const deleteComment = async (req,res)=>{
+    const {comment} = req.body;
+    const {id}= req.params;
+    const userName = req.token.userName;
+    const userId = req.token.userId;
+    console.log(id,userName);
+    try{
+       const AddCom = await dietModel.findOneAndUpdate({_id: id }, {$pull:{comment:{ comment, userName,userId}}},
+       {new: true}).populate("user");
+       res.status(201).json(AddCom)
+    } catch (err){
+        res.send(err)
+    }
+}
+
+
+module.exports = { getDiet, goDietFood, postDiet, deleteDiet, putDiet, postComment,deleteComment };

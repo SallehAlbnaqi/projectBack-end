@@ -23,10 +23,12 @@ const getVegetFood = async (req,res)=>{
 
 
 const postVeget = async (req,res) =>{
-const { newName, newDescription, newImg } = req.body;
+let { newName, newDescription, newImg, newVideo } = req.body;
+newVideo =  "https://www.youtube.com/embed/"+newVideo
+
 const user = req.token.userId
 try{
-    const newVeget = new vegetModel({name: newName, description: newDescription, img: newImg });
+    const newVeget = new vegetModel({name: newName, description: newDescription, img: newImg, video: newVideo  });
     const savedVeget = await newVeget.save();
     res.status(201).json(savedVeget);
 }catch (error) {
