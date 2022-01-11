@@ -21,9 +21,10 @@ const postFood = async (req,res)=>{
         // سوينا حفظ للنيو فود بالداتا بيس
         // const foods = await foodModel.find({user: user}).populate("user");
         res.status(201).json(saveFood);
-        // هنا استجبنا للطلب اللي جاناوارسلناه ..
     } catch (error){
         res.send("error")
+        // هنا استجبنا للطلب اللي جاناوارسلناه ..
+
     }
 }
 

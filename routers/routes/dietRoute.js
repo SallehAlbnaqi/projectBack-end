@@ -11,7 +11,7 @@ dietRoute.delete("/Diet/:id", authentication,deleteDiet);
 dietRoute.put("/DietUpd/:id", authentication, putDiet);
 
 dietRoute.post("/AddComment/:id", authentication, postComment)
-dietRoute.delete("/Comment/:id", authentication, deleteComment)
+dietRoute.put("/Comment/:id", authentication, deleteComment)
 
 
 
