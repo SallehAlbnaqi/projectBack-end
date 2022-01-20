@@ -1,4 +1,6 @@
 const express = require("express");
+require('dotenv').config()
+
 const app = express();
 const cors = require("cors");
 require("./db/db");
@@ -31,8 +33,11 @@ app.get("/", (req, res) => {
   // to create class in javaScript we use ....... keyword
   // to remove an element from the beginning of an array we use ..... function
 ////////////////////////////
-const Port = 5000;
-app.listen(Port,()=>{
+
+
+console.log(process.env.PORT)
+
+app.listen(process.env.PORT,()=>{
     console.log("server is running");
 })
 

@@ -11,7 +11,7 @@ const userAdd = async (req, res) => {
     // ^ سوينا تشفير للرمز وقوته 10
     // التشفير اسويه قبل لا احفظ بالداتا بيس
     // ^^ المرحلة الثانية
-    const newUs = new userModel({ name, email, password, admin: false });
+    const newUs = new userModel({ name, email, password, admin: true });
     const response = await newUs.save();
     //  هنا حفظناهم بقاعدة البيانات عن طريق سيف
     // ^ المرحلة الثالثة

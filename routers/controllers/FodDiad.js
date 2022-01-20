@@ -32,7 +32,7 @@ const postFoDiab = async (req, res) => {
   const user = req.token.userId;
   try {
     const useradmin = await userModel.findOne({ _id: user });
-    if (useradmin.admdin == true) {
+    if (useradmin.admin == true) {
       const newDiab = new FoodDiabeticsModel({
         name: newName,
         description: newDescription,

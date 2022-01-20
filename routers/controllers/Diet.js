@@ -31,7 +31,8 @@ const postDiet = async (req, res) => {
   console.log(req);
   try {
     const useradmin = await userModel.findOne({ _id: user });
-    if (useradmin.admdin == true) {
+    console.log(useradmin,"sal")
+    if (useradmin.admin == true) {
       const newDiet = new dietModel({
         name: newName,
         description: newDescription,

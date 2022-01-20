@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
-mongoose.connect("mongodb://localhost:27017/yourDBFood").then(
+ console.log(process.env.DB_URL)
+mongoose.connect(process.env.DB_URL).then(
               // ^ أنشأنا  قاعدة بيانات وسميناها فود
   () => { 
     console.log("DB connected");
